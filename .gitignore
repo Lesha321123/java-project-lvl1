@@ -1,3 +1,8 @@
+.idea
+app/.gradle
+app/.idea
+app/gradle
+
 
 # Compiled class file
 *.class
