@@ -2,6 +2,8 @@
 app/.gradle
 app/.idea
 app/gradle
+build
+build/
 
 
 # Compiled class file
