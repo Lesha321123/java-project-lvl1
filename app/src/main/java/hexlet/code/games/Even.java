@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Scanner;
 
 public class Even {
@@ -7,39 +9,34 @@ public class Even {
     private int randomNumber;
     private int countTrueAnswers;
     private String trueAnswer;
-    private String name;
 
-    public Even(String name) {
-        this.name = name;
+    public Even() {
+
     }
 
     public void startGame() {
         Scanner sc = new Scanner(System.in);
         while (countTrueAnswers < 3) {
-            System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-            getRandomNumber();
+            Engine.print("Answer 'yes' if the number is even, otherwise answer 'no'.");
+            randomNumber = Engine.getRandomNumber(10);
             isTrueAnswer();
-            System.out.println("Question: " + randomNumber);
-            System.out.println("Your answer:");
+            Engine.print("Question: " + randomNumber);
+            Engine.print("Your answer:");
             String answer = sc.nextLine();
             if (answer.equals(trueAnswer)) {
-                System.out.println("Correct!");
+                Engine.print("Correct!");
                 countTrueAnswers++;
                 if(countTrueAnswers == 3) {
-                    System.out.println("Congratulations, " + name + "!");
+                    Engine.print("Congratulations, " + Engine.name + "!");
                     break;
                 }
             } else {
-                System.out.println(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
-                System.out.println("Let's try again, " + name + "!");
+                Engine.print(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
+                Engine.print("Let's try again, " + Engine.name + "!");
                 break;
             }
         }
         sc.close();
-    }
-
-    public void getRandomNumber() {
-        randomNumber = (int) (Math.random() * 10);
     }
 
     public void isTrueAnswer() {

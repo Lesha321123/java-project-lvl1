@@ -1,5 +1,7 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Scanner;
 
 public class Calc {
@@ -8,41 +10,36 @@ public class Calc {
     private String randomOperator;
     private int countTrueAnswers;
     private int trueAnswer;
-    private String name;
 
-    public Calc(String name) {
-        this.name = name;
+
+    public Calc() {
     }
 
     public void startGame() {
         Scanner sc = new Scanner(System.in);
         while (countTrueAnswers < 3) {
-            System.out.println("What is the result of the expression?");
-            firsRandomNumber = getRandomNumber();
-            secondRandomNumber = getRandomNumber();
+            Engine.print("What is the result of the expression?");
+            firsRandomNumber = Engine.getRandomNumber(100);
+            secondRandomNumber = Engine.getRandomNumber(100);
             randomOperator = getRandomOperator();
             trueAnswer = getTrueAnswer();
-            System.out.println("Question: " + firsRandomNumber + " " + randomOperator + " " + secondRandomNumber);
-            System.out.println("Your answer:");
+            Engine.print("Question: " + firsRandomNumber + " " + randomOperator + " " + secondRandomNumber);
+            Engine.print("Your answer:");
             int answer = sc.nextInt();
             if (answer == trueAnswer) {
-                System.out.println("Correct!");
+                Engine.print("Correct!");
                 countTrueAnswers++;
                 if(countTrueAnswers == 3) {
-                    System.out.println("Congratulations, " + name + "!");
+                    Engine.print("Congratulations, " + Engine.name + "!");
                     break;
                 }
             } else {
-                System.out.println(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
-                System.out.println("Let's try again, " + name + "!");
+                Engine.print(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
+                Engine.print("Let's try again, " + Engine.name + "!");
                 break;
             }
         }
         sc.close();
-    }
-
-    public int getRandomNumber() {
-        return  (int) (Math.random() * 100);
     }
 
     public String getRandomOperator() {

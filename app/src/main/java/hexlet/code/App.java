@@ -7,26 +7,28 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Please enter the game number and press Enter.");
-        System.out.println("1 - Greet");
-        System.out.println("2 - Even");
-        System.out.println("3 - Calc");
-        System.out.println("0 - Exit");
+        Engine.print("Please enter the game number and press Enter.");
+        Engine.print("1 - Greet");
+        Engine.print("2 - Even");
+        Engine.print("3 - Calc");
+        Engine.print("0 - Exit");
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         switch (input) {
             case (1) :
-                System.out.println("Your choice: " + input);
-                greeting();
+                Engine.print("Your choice: " + input);
+                Engine.greeting();
                 break;
             case (2) :
-                System.out.println("Your choice: " + input);
-                Even even = new Even(greeting());
+                Engine.print("Your choice: " + input);
+                Engine.greeting();
+                Even even = new Even();
                 even.startGame();
                 break;
             case (3) :
-                System.out.println("Your choice: " + input);
-                Calc calc = new Calc(greeting());
+                Engine.print("Your choice: " + input);
+                Engine.greeting();
+                Calc calc = new Calc();
                 calc.startGame();
                 break;
             case (0) :
