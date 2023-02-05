@@ -18,24 +18,27 @@ public class Calc {
     public void startGame() {
         Scanner sc = new Scanner(System.in);
         while (countTrueAnswers < 3) {
-            Engine.print("What is the result of the expression?");
+
+            Engine.taskCondition("What is the result of the expression?");
+
             firsRandomNumber = Engine.getRandomNumber(100);
             secondRandomNumber = Engine.getRandomNumber(100);
             randomOperator = getRandomOperator();
-            trueAnswer = getTrueAnswer();
+            Engine.trueAnswer = getTrueAnswer();
             Engine.print("Question: " + firsRandomNumber + " " + randomOperator + " " + secondRandomNumber);
+
             Engine.print("Your answer:");
-            int answer = sc.nextInt();
-            if (answer == trueAnswer) {
+            Engine.answer = sc.nextInt();
+
+            if (Engine.answer == trueAnswer) {
                 Engine.print("Correct!");
                 countTrueAnswers++;
                 if(countTrueAnswers == 3) {
-                    Engine.print("Congratulations, " + Engine.name + "!");
+                    Engine.alertWin();
                     break;
                 }
             } else {
-                Engine.print(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
-                Engine.print("Let's try again, " + Engine.name + "!");
+                Engine.alertDefeat();
                 break;
             }
         }

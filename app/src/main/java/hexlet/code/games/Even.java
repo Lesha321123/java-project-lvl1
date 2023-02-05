@@ -17,22 +17,25 @@ public class Even {
     public void startGame() {
         Scanner sc = new Scanner(System.in);
         while (countTrueAnswers < 3) {
-            Engine.print("Answer 'yes' if the number is even, otherwise answer 'no'.");
+
+            Engine.taskCondition("Answer 'yes' if the number is even, otherwise answer 'no'.");
+
             randomNumber = Engine.getRandomNumber(10);
             isTrueAnswer();
             Engine.print("Question: " + randomNumber);
+
             Engine.print("Your answer:");
             String answer = sc.nextLine();
+
             if (answer.equals(trueAnswer)) {
                 Engine.print("Correct!");
                 countTrueAnswers++;
                 if(countTrueAnswers == 3) {
-                    Engine.print("Congratulations, " + Engine.name + "!");
+                    Engine.alertWin();
                     break;
                 }
             } else {
-                Engine.print(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
-                Engine.print("Let's try again, " + Engine.name + "!");
+                Engine.alertDefeat();
                 break;
             }
         }

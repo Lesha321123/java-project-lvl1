@@ -3,6 +3,10 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
+
+    public static int intTrueAnswer;
+    public static int trueAnswer;
+    public static int answer;
     public static String name;
 
     public static void print(String text) {
@@ -20,6 +24,17 @@ public class Engine {
         name = sc.nextLine();
         System.out.println("Hello, " + name + "!");
         return name;
+    }
+    public static void alertWin() {
+        Engine.print("Congratulations, " + name + "!");
+    }
+
+    public static void alertDefeat() {
+        Engine.print(answer + " is wrong answer ;(. Correct answer was " + trueAnswer + ".");
+        Engine.print("Let's try again, " + Engine.name + "!");
+    }
+    public static void taskCondition(String condition) {
+        System.out.println(condition);
     }
 
     public String getName() {
