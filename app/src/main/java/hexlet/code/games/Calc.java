@@ -5,53 +5,29 @@ import hexlet.code.Engine;
 import java.util.Scanner;
 
 public class Calc {
-    private int firsRandomNumber;
-    private int secondRandomNumber;
-    private String randomOperator;
-    private int countTrueAnswers;
+    private static int firsRandomNumber;
+    private static int secondRandomNumber;
+    private static String randomOperator;
     private int trueAnswer;
 
 
     public Calc() {
     }
 
-    public void startGame() {
-        Scanner sc = new Scanner(System.in);
-        while (countTrueAnswers < 3) {
 
-            Engine.taskCondition("What is the result of the expression?");
 
-            firsRandomNumber = Engine.getRandomNumber(100);
-            secondRandomNumber = Engine.getRandomNumber(100);
-            randomOperator = getRandomOperator();
-            Engine.trueAnswer = getTrueAnswer();
-            Engine.print("Question: " + firsRandomNumber + " " + randomOperator + " " + secondRandomNumber);
-
-            Engine.print("Your answer:");
-            Engine.answer = sc.nextInt();
-
-            if (Engine.answer == trueAnswer) {
-                Engine.print("Correct!");
-                countTrueAnswers++;
-                if(countTrueAnswers == 3) {
-                    Engine.alertWin();
-                    break;
-                }
-            } else {
-                Engine.alertDefeat();
-                break;
-            }
-        }
-        sc.close();
+    public static void condition() {
+        System.out.println("What is the result of the expression?");
+        firsRandomNumber = Engine.getRandomNumber(100);
+        secondRandomNumber = Engine.getRandomNumber(100);
+        randomOperator = Engine.getRandomOperator();
     }
 
-    public String getRandomOperator() {
-        String[] arrayOperators = new String[]{"+", "-", "*"};
-        int randomChoice = (int) (Math.random() * 3);
-        return  arrayOperators[randomChoice];
+    public static void getQuestion() {
+        Engine.print("Question: " + firsRandomNumber + " " + randomOperator + " " + secondRandomNumber);
     }
 
-    public int getTrueAnswer() {
+    public static int getTrueAnswer() {
         int trueAnswer = 0;
         switch (randomOperator) {
             case ("+") :
@@ -64,6 +40,7 @@ public class Calc {
                 trueAnswer = firsRandomNumber * secondRandomNumber;
                 break;
         }
+
         return trueAnswer;
     }
 }

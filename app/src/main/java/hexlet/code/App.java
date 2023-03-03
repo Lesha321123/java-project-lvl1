@@ -29,7 +29,7 @@ public class App {
                 Engine.print("Your choice: " + input);
                 Engine.greeting();
                 Calc calc = new Calc();
-                calc.startGame();
+                Engine.startGame(calc);
                 break;
             case (0) :
                 break;
